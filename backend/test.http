@@ -1,0 +1,82 @@
+// =====================================================
+// ARCHIVO DE PRUEBA DE ENDPOINTS
+// Importa este archivo en Postman o usa REST Client
+// =====================================================
+
+// =====================================================
+// CONFIGURACIÓN
+// =====================================================
+// Base URL: http://localhost:5000/api
+
+// =====================================================
+// CATEGORÍAS - CRUD
+// =====================================================
+
+// 1. GET - OBTENER TODAS LAS CATEGORÍAS
+// @name GetAllCategorias
+GET http://localhost:5000/api/categorias
+
+###
+
+// 2. GET - OBTENER UNA CATEGORÍA POR ID
+// @name GetCategoriaById
+GET http://localhost:5000/api/categorias/1
+
+###
+
+// 3. POST - CREAR NUEVA CATEGORÍA
+// @name CreateCategoria
+POST http://localhost:5000/api/categorias
+Content-Type: application/json
+
+{
+  "nombre_categoria": "Informática",
+  "descripcion": "Productos de informática y computación"
+}
+
+###
+
+// 4. PUT - ACTUALIZAR CATEGORÍA
+// @name UpdateCategoria
+PUT http://localhost:5000/api/categorias/1
+Content-Type: application/json
+
+{
+  "nombre_categoria": "Electrónica Actualizada",
+  "descripcion": "Productos electrónicos de última generación"
+}
+
+###
+
+// 5. DELETE - ELIMINAR CATEGORÍA
+// @name DeleteCategoria
+DELETE http://localhost:5000/api/categorias/17
+
+###
+
+// =====================================================
+// PRUEBAS ADICIONALES
+// =====================================================
+
+// Prueba de categoría no existente (404)
+// @name GetCategoriaNonExistent
+GET http://localhost:5000/api/categorias/999
+
+###
+
+// Prueba de POST sin nombre (400)
+// @name CreateCategoriaInvalid
+POST http://localhost:5000/api/categorias
+Content-Type: application/json
+
+{
+  "descripcion": "Sin nombre - debe fallar"
+}
+
+###
+
+// Prueba de ruta no existente (404)
+// @name TestRoutNotFound
+GET http://localhost:5000/api/inexistente
+
+###
